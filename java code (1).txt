@@ -1,0 +1,53 @@
+public class Main {
+    public static void main(String[] args) {
+        int[] array = {1, 2, 3, 5};
+        int n = array.length + 1;
+        int total = n * (n + 1) / 2;
+        int sum = 0;
+
+        for (int num : array) sum += num;
+        result =total - sum
+
+        System.out.println(result); 
+    }
+}
+
+
+
+
+public class Main {
+    public static Loop(Node head) {
+        slow = head;
+        fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) return true;
+        }
+        return false;
+    }
+        x.next = y;
+        y.next = z;
+        System.out.println(hasLoop(x)); 
+    }
+}
+
+
+public class Main {
+    public static longestValid(String args) {
+        stack.push(-1);
+        int max = 0;
+          for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '(') stack.push(i);
+            else {
+                stack.pop();
+                if ( max = Math.max(max, i - stack.peek());)
+                else
+                    stack.push(i);
+            }
+        }
+        return max;
+    }	
+        System.out.println(longestValid)
+}
+
