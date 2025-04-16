@@ -1,0 +1,152 @@
+class Solution {
+    public int evaluate(String[] s) {
+        Stack<Integer> stack = new Stack<>();
+
+        for (String c : s) {
+            if (c.equals("+")) {
+                stack.push(stack.pop() + stack.pop());
+            } else if (c.equals("-")) {
+                int second = stack.pop();
+                int first = stack.pop();
+                stack.push(first - second);
+            } else if (c.equals("*")) {
+                stack.push(stack.pop() * stack.pop());
+            } else if (c.equals("/")) {
+                int second = stack.pop();
+                int first = stack.pop();
+                stack.push(first / second);
+            } else {
+                stack.push(Integer.parseInt(c));
+            }
+        }
+
+        return stack.peek();        
+    }
+}
+
+
+
+class Solution {
+    public int largestRectang(int[] heights) {
+        Stack<Integer> stack = new Stack<>();
+        stack.push(-1);
+        int maxArea = 0;
+
+        for (int i = 0; i < heights.length; i++){
+                int height = heights[stack.pop()];
+                int width = i - stack.peek() - 1;
+                maxArea = Math.max(maxArea, height * width);
+            }
+            stack.push(i);
+      }
+       
+
+        return maxArea;
+    }
+}
+
+
+public class Solution {
+    public ListNode reverseKGroup(ListNode head, int k) {
+        ListNode curr = head;
+        int count = 0;
+
+            while (curr != null && count < k) {
+            curr = curr.next;
+            count++;
+        }
+
+        if (count == k) {
+
+             while (count-- > 0) {
+                ListNode temp = head.next;
+                head.next = curr;
+                curr = head;
+                head = temp;
+            }
+
+           return head;
+    }
+}
+
+
+
+class Solution {
+    public ListNode oddEvenList(ListNode head) {
+        if(head == null ) 
+           return head;
+        ListNode odd = head, even = head.next, evenHead = even;
+        while(even!=null && even.next != null){
+            odd.next = even.next;
+            odd = odd.next;
+            even.next = even.next.next;
+            even = even.next;
+        }
+       
+        return head;
+    }
+}
+
+
+class Solution {
+    public int minimumPairRemoval(int[] nums) {
+        int n = nums.length, count = 0;
+        while (n > 1) {
+            boolean sorted = true;
+            int min = Integer.MAX_VALUE
+            for (int i = 0; i < n - 1; i++) {
+                if (nums[i] > nums[i + 1]) sorted = false;
+                int sum = nums[i] + nums[i + 1];
+                if (sum < min) { min = sum }
+            }
+            if (sorted) break;
+            for (int i = idx + 1; i < n - 1; i++)
+             nums[i] = nums[i + 1];
+             count++;
+        }
+        return count;
+    }
+}
+
+
+class Solution {
+    public int[] finalPrices(int[] prices) {
+        int n=prices.length;
+        Stack<Integer> stack=new Stack();
+
+        for(int i=n-1; i>=0; i--){
+            
+            while(!st.isEmpty() && stack.peek()>prices[i]){
+                st.pop();
+            }
+           stack.push(prices[i]);
+
+            prices[i]-=discount;           
+        }
+
+        return prices;
+    }
+}
+
+
+class Solution {
+    public ListNode removeZeroSumSublists(ListNode head) {
+        Map<Integer> map = new HashMap<>();
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        int sum = 0;
+
+        for (ListNode node = dummy; node != null; node = node.next) {
+            sum += node.val;
+            map.put(sum, node);
+        }
+
+        sum = 0;
+        for (ListNode node = dummy; node != null; node = node.next) {
+            sum += node.val;
+            node.next = map.get(sum).next;
+        }
+
+        return dummy.next;
+    }
+}
